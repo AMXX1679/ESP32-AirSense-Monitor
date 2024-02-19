@@ -273,7 +273,7 @@ void loop() {
 - [Adafruit Unified Sensor](https://github.com/adafruit/Adafruit_Sensor)
 - [Adafruit BMP280](https://github.com/adafruit/Adafruit_BMP280)
 - [DHT Sensor Libry](https://github.com/adafruit/DHT-sensor-library)
-- [MQ135 Library](https://github.com/GeorgK/MQ135)ra
+- [MQ135 Library](https://github.com/GeorgK/MQ135)
 
 ## Usage
 
