@@ -259,8 +259,26 @@ void loop() {
   Blynk.run();
   timer.run();
 }
-```
+````
+## Features
 
-## Conclusion
+- **Multi-Sensor Integration:** Incorporates DHT11 and MQ135 sensors for accurate temperature, humidity, and air quality readings.
+- **Blynk Integration:** Utilizes the Blynk cloud platform for remote monitoring and control of the weather station.
+- **OLED Display:** Displays real-time sensor data on an OLED screen for local visualization.
+- **LED Indicators:** Provides visual feedback through RGB LEDs based on environmental conditions.
+- **Customizable:** Easily adaptable and extendable for different sensor configurations and use cases.
+## Dependencies
 
-This code provides a comprehensive overview of a simple weather station implementation. Each section explains its purpose, and users can follow the instructions to customize the code for their specific hardware and preferences.
+- [Blynk Library](https://github.com/blynkkk/blynk-library)
+- [Adafruit Unified Sensor](https://github.com/adafruit/Adafruit_Sensor)
+- [Adafruit BMP280](https://github.com/adafruit/Adafruit_BMP280)
+- [DHT Sensor Libry](https://github.com/adafruit/DHT-sensor-library)
+- [MQ135 Library](https://github.com/GeorgK/MQ135)ra
+
+## Usage
+
+Follow the provided code documentation to understand and customize the weather station for your specific requirements. Use the Blynk app to remotely monitor and control the weather station.
+
+Feel free to contribute, open issues, or provide feedback to enhance this weather station project!
+
+---
