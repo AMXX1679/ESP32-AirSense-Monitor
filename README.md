@@ -14,9 +14,9 @@ This Arduino code serves as the firmware for a simple weather station built on a
   - Replace the placeholder values with your Blynk template ID, template name, and authentication token.
 
 ```cpp
-#define BLYNK_TEMPLATE_ID "TMPL4ah-fKabl"
+#define BLYNK_TEMPLATE_ID "YOUR_TEMPLATE_ID"
 #define BLYNK_TEMPLATE_NAME "Simple Weather Station"
-#define BLYNK_AUTH_TOKEN "ytRnzjY2VVAeSwuRFK6-qhRg-wX2TPRu"
+#define BLYNK_AUTH_TOKEN "YOUR_AUTH_TOKEN"
 ```
 
 ### 2. WiFi Credentials
