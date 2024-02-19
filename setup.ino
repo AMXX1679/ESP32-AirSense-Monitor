@@ -4,9 +4,9 @@
 //
 //   https://blynk.cloud/dashboard/templates
 
-#define BLYNK_TEMPLATE_ID "TMPL4ah-fKabl"
+#define BLYNK_TEMPLATE_ID "YOUR_TEMPLATE_ID"
 #define BLYNK_TEMPLATE_NAME "Simple Weather Station"
-#define BLYNK_AUTH_TOKEN "ytRnzjY2VVAeSwuRFK6-qhRg-wX2TPRu"
+#define BLYNK_AUTH_TOKEN "YOUR_AUTH_TOKEN"
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
