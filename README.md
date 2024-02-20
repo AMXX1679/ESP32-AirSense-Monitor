@@ -243,9 +243,7 @@ void setup() {
 void loop() {
   setLEDColors(DHT_HUMIDITY, DHT_TEMPERATURE, val);
 
-  val =
-
- analogRead(MQ135_SENSOR_PIN);
+  val = analogRead(32)*2;
   Serial.print("raw = ");
   Serial.println(val);
 
