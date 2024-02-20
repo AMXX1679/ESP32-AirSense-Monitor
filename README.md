@@ -41,7 +41,6 @@ This Arduino code serves as the firmware for a simple weather station built on a
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_BMP280.h>
 #include <BlynkSimpleEsp32.h>
 #include <DHT.h>
 #include "MQ135.h"
@@ -271,7 +270,6 @@ void loop() {
 
 - [Blynk Library](https://github.com/blynkkk/blynk-library)
 - [Adafruit Unified Sensor](https://github.com/adafruit/Adafruit_Sensor)
-- [Adafruit BMP280](https://github.com/adafruit/Adafruit_BMP280)
 - [DHT Sensor Libry](https://github.com/adafruit/DHT-sensor-library)
 - [MQ135 Library](https://github.com/GeorgK/MQ135)
 
