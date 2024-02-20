@@ -19,7 +19,6 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_Sensor.h> //You need to add it by searching "Adafruit unified sensor" in libraries and install it
-#include <Adafruit_BMP280.h> //You need to add it by searching "Adafruit BMP280" in libraries and install it
 #include <BlynkSimpleEsp32.h> //You need to add it by searching "Blynk" in libraries and install it
 #include <DHT.h> //You need to add it by searching "DHT sensor library" in libraries and install it
 #include "MQ135.h"
@@ -102,8 +101,6 @@ void readAndSendDhtData() {
     }
   }
 }
-
-// Reading BMP data
 
 void reandAndSendSensorsData() {
   readAndSendDhtData();
