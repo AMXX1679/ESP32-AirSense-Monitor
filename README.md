@@ -40,11 +40,11 @@ This Arduino code serves as the firmware for a simple weather station built on a
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
-#include <Adafruit_Sensor.h>
-#include <BlynkSimpleEsp32.h>
-#include <DHT.h>
-#include "MQ135.h"
-#include <U8g2lib.h>
+#include <Adafruit_Sensor.h> //You need to add it by searching "Adafruit unified sensor" in libraries and install it
+#include <Adafruit_BMP280.h> //You need to add it by searching "Adafruit BMP280" in libraries and install it
+#include <BlynkSimpleEsp32.h> //You need to add it by searching "Blynk" in libraries and install it
+#include <DHT.h> //You need to add it by searching "DHT sensor library" in libraries and install it
+#include <Adafruit_GFX.h>
 ```
 
 ## Pin Configuration
@@ -55,7 +55,6 @@ This Arduino code serves as the firmware for a simple weather station built on a
 
 ```cpp
 #define DHTPIN 26
-#define MQ135_SENSOR_PIN 32
 #define PIN_RED 4
 #define PIN_GREEN 5
 #define PIN_BLUE 2
@@ -71,17 +70,8 @@ This Arduino code serves as the firmware for a simple weather station built on a
 Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
 ```
 
-## Display Setup
 
-- **Description:** Configure the OLED display using the U8g2 library.
-- **Instructions:**
-  - No additional setup is needed, but ensure the library is installed.
-
-```cpp
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
-```
-
-## Sensor Setup
+# Sensor Setup
 
 - **Description:** Initialize the DHT and MQ135 sensors.
 - **Instructions:**
@@ -89,7 +79,6 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
 ```cpp
 DHT dht(DHTPIN, DHTTYPE);
-MQ135 gasSensor(MQ135_SENSOR_PIN);
 ```
 
 ## Timer and State Variables
