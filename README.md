@@ -267,3 +267,8 @@ Follow the provided code documentation to understand and customize the weather s
 Feel free to contribute, open issues, or provide feedback to enhance this weather station project!
 
 ---
+
+
+![Logo](https://raw.githubusercontent.com/AMXX1679/ESP32_WeatherStation/main/Untitled%20Sketch_Steckplatine.jpg)
+
+
