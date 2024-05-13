@@ -1,8 +1,9 @@
+
 # Simple Weather Station Readme
 
 ## Introduction
 
-This Arduino code serves as the firmware for a simple weather station built on an ESP32 microcontroller. The weather station integrates sensors to measure temperature, humidity, and air quality (PPM). The collected data is displayed on an OLED screen and transmitted to the Blynk cloud platform for remote monitoring.
+This Arduino code serves as the firmware for a simple weather station built on an ESP32 microcontroller. The weather station integrates sensors to measure temperature, humidity, and air quality (PPM). The collected data and transmitted to the Blynk cloud platform for remote monitoring.
 
 ## Getting Started
 
@@ -12,6 +13,7 @@ This Arduino code serves as the firmware for a simple weather station built on a
 - **Instructions:**
   - Visit [Blynk Cloud Templates](https://blynk.cloud/dashboard/templates).
   - Replace the placeholder values with your Blynk template ID, template name, and authentication token.
+
 
 ```cpp
 #define BLYNK_TEMPLATE_ID "YOUR_TEMPLATE_ID"
@@ -70,7 +72,6 @@ This Arduino code serves as the firmware for a simple weather station built on a
 Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
 ```
 
-
 # Sensor Setup
 
 - **Description:** Initialize the DHT and MQ135 sensors.
@@ -80,12 +81,6 @@ Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
 ```cpp
 DHT dht(DHTPIN, DHTTYPE);
 ```
-
-## Timer and State Variables
-
-- **Description:** Declare timer and state variables for data processing and LED control.
-- **Instructions:**
-  - No user configuration needed.
 
 ```cpp
 BlynkTimer timer;
@@ -142,61 +137,27 @@ void readAndSendDhtData() {
   // (Continued on next comment due to character limit)
 ```
 
-## Read and Send Sensors Data
-
-- **Description:** Read and send DHT sensor data every 5 seconds.
-- **Instructions:**
-  - No user configuration needed.
+## LED Condition
 
 ```cpp
-void reandAndSendSensorsData() {
-  readAndSendDhtData();
-  Serial.println("Sending data from sensors");
+void setLEDColors(int val) {
+  if (val < 1300 && val > 800) {
+    // Green LED condition is met
+    digitalWrite(PIN_GREEN, HIGH);
+    digitalWrite(PIN_RED, LOW);
+    digitalWrite(PIN_BLUE, LOW);
+  } else if (val > 1300) {
+    // Red LED condition is met
+    digitalWrite(PIN_GREEN, LOW);
+    digitalWrite(PIN_RED, HIGH);
+    digitalWrite(PIN_BLUE, LOW);
+  } else {
+    // All values are good, turn on green LED
+    digitalWrite(PIN_GREEN, LOW);
+    digitalWrite(PIN_RED, LOW);
+    digitalWrite(PIN_BLUE, HIGH);
+  }
 }
-```
-
-## Red LED Condition
-
-- **Description:** Determine if the conditions for activating the red LED are met.
-- **Instructions:**
-  - No user configuration needed.
-
-```cpp
-bool isRedLEDCondition(float humidity, float temperature, int val) {
-  // ...
-```
-
-## Green LED Condition
-
-- **Description:** Determine if the conditions for activating the green LED are met.
-- **Instructions:**
-  - No user configuration needed.
-
-```cpp
-bool isGreenLEDCondition(float humidity, float temperature, int val) {
-  // ...
-```
-
-## Set LED Colors
-
-- **Description:** Control RGB LEDs based on sensor data.
-- **Instructions:**
-  - No user configuration needed.
-
-```cpp
-void setLEDColors(float humidity, float temperature, int val) {
-  // ...
-```
-
-## Display Data on Screen
-
-- **Description:** Display sensor data on the OLED screen.
-- **Instructions:**
-  - No user configuration needed.
-
-```cpp
-void displayDataOnScreen() {
-  // ...
 ```
 
 ## Setup
@@ -206,59 +167,61 @@ void displayDataOnScreen() {
   - Ensure the correct pin assignments and set up the DHT sensor.
 
 ```cpp
-void setup() {
+    void setup()
+{
+
   Serial.begin(115200);
   Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
 
-  pinMode(MQ135_SENSOR_PIN, INPUT);
   pinMode(PIN_RED, OUTPUT);
   pinMode(PIN_GREEN, OUTPUT);
   pinMode(PIN_BLUE, OUTPUT);
   setupDht();
-
+  // Set up timer to run every 5 sec
   timer.setInterval(5000L, reandAndSendSensorsData);
 
-  u8g2.begin();
+  pinMode(DataPin, INPUT);
+
+  delay(2000);
 }
 ```
 
 ## Loop
 
-- **Description:** Control RGB LEDs, read sensor values, display data, and run Blynk timer.
+- **Description:** Control RGB LEDs, read sensor values, and run Blynk timer.
 - **Instructions:**
   - No user configuration needed.
 
 ```cpp
 void loop() {
-  setLEDColors(DHT_HUMIDITY, DHT_TEMPERATURE, val);
 
-  val = analogRead(32)*2;
-  Serial.print("raw = ");
-  Serial.println(val);
+  pwmtime = pulseIn(DataPin, HIGH, 2000000) / 1000;
+  float pulsepercent = pwmtime / 1004.0;
+  PPM = ppmrange * pulsepercent;
+  Serial.print("CO2 Konzentration in der Luft in PPM: ");
+  Serial.println(PPM);
 
-  Blynk.virtualWrite(MQ135_BLYNK_VPIN_PPM, val);
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
 
-  displayDataOnScreen();
+  setLEDColors(PPM);
+  Serial.println(DHT_HUMIDITY);
+  Serial.println(DHT_TEMPERATURE);
 
-  delay(2000);
+  Blynk.virtualWrite(MHZ_BLYNK_VPIN_PPM, PPM);
 
-  Blynk.run();
+  delay(20);
+
+  Blynk.run();  
   timer.run();
 }
 ````
-## Features
 
-- **Multi-Sensor Integration:** Incorporates DHT11 and MQ135 sensors for accurate temperature, humidity, and air quality readings.
-- **Blynk Integration:** Utilizes the Blynk cloud platform for remote monitoring and control of the weather station.
-- **OLED Display:** Displays real-time sensor data on an OLED screen for local visualization.
-- **LED Indicators:** Provides visual feedback through RGB LEDs based on environmental conditions.
-- **Customizable:** Easily adaptable and extendable for different sensor configurations and use cases.
 ## Dependencies
 
 - [Blynk Library](https://github.com/blynkkk/blynk-library)
 - [Adafruit Unified Sensor](https://github.com/adafruit/Adafruit_Sensor)
 - [DHT Sensor Libry](https://github.com/adafruit/DHT-sensor-library)
-- [MQ135 Library](https://github.com/GeorgK/MQ135)
 
 ## Usage
 
@@ -270,5 +233,3 @@ Feel free to contribute, open issues, or provide feedback to enhance this weathe
 
 
 ![Logo](https://raw.githubusercontent.com/AMXX1679/ESP32_WeatherStation/main/Untitled%20Sketch_Steckplatine.jpg)
-
-
