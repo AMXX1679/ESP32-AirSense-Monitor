@@ -198,7 +198,7 @@ void loop() {
   pwmtime = pulseIn(DataPin, HIGH, 2000000) / 1000;
   float pulsepercent = pwmtime / 1004.0;
   PPM = ppmrange * pulsepercent;
-  Serial.print("CO2 Konzentration in der Luft in PPM: ");
+  Serial.print("CO2:  ");
   Serial.println(PPM);
 
   float humidity = dht.readHumidity();
