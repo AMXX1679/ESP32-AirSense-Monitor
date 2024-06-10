@@ -231,5 +231,15 @@ Feel free to contribute, open issues, or provide feedback to enhance this weathe
 
 ---
 
+## Quellen
+
+https://www.youtube.com/watch?v=0fYBoL6YnJI
+https://sming.readthedocs.io/en/latest/_inc/Sming/Libraries/MHZ19/index.html
+https://github.com/maaz-siddiqui/ESP32_MQ-135_SH1106
+https://chatgpt.com/
+https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-sensor-arduino-ide/
+https://esp32io.com/tutorials/esp32-rgb-led
+ 
+
 
 ![Logo](https://raw.githubusercontent.com/AMXX1679/ESP32_WeatherStation/main/Untitled%20Sketch_Steckplatine.jpg)
