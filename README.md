@@ -231,6 +231,11 @@ Feel free to contribute, open issues, or provide feedback to enhance this weathe
 
 ---
 
+
+![Logo](https://raw.githubusercontent.com/AMXX1679/ESP32_WeatherStation/main/Untitled%20Sketch_Steckplatine.jpg)
+
+---
+
 ## Quellen
 
 https://www.youtube.com/watch?v=0fYBoL6YnJI
@@ -240,6 +245,3 @@ https://chatgpt.com/
 https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-sensor-arduino-ide/
 https://esp32io.com/tutorials/esp32-rgb-led
  
-
-
-![Logo](https://raw.githubusercontent.com/AMXX1679/ESP32_WeatherStation/main/Untitled%20Sketch_Steckplatine.jpg)
